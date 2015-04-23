@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Formulario</title>
+  </head>
+  <body>
+    <form  action="formulario.php" method="post">
+      Nome
+      <input type="text" name="Nome" value="">
+      E-mail
+      <input type="text" name="Email" value="">
+      Confirmar email
+      <input type="text" name="ConfirmaEmail" value="">
+      Senha
+      <input type="password" name="Senha" value="">
+      <input type="submit" id="enviar" name="Enviar" value="Enviar">
+    </form>
+
+    <script type="text/javascript" src="https://code.jquery.com/jquery-1.11.2.min.js">
+    </script>
+
+    <script type="text/javascript">
+      ()(function(){
+
+        $('#cadastrar').click(function(){
+
+            var nome = $('#nome');
+            var email = $('#email');
+            var confirmacao_email = $('#confirmacao_email');
+            var senha = $('#senha');
+            var confirmacao_senha = $('#confirmacao_senha');
+
+
+            var formatacao_erro = '1px solid red';
+
+            if($(nome).val() === null || $(nome).val() === '')
+            {
+              $(nome).css('border', formatacao_erro);
+              return false;
+            }
+            else if($(email).val() === null || $(email).val() === '')
+            {
+              $(email).css('border', formatacao_erro);
+              return false;
+            }
+            else if($(confirmacao_email).val() === null || $(confirmacao_email).val() === '')
+            {
+              $(confirmacao_email).css('border', formatacao_erro);
+              return false;
+            }
+            else if($(senha).val() === null || $(senha).val() === '')
+            {
+              $(senha).css('border', formatacao_erro);
+              return false;
+            }
+            else if($(confirmacao_senha).val() === null || $(confirmacao_senha)val() === '')
+            {
+              $(confirmacao_senha).css('border', formatacao_erro);
+              return false;
+            }
+
+            var confirmacoes = $(email).val() === $(confirmacao_email).val();
+            confirmacoes = confirmacoes && ($(email).val() === $(confirmacao_senha).val());
+
+            if(!confirmacoes)
+            {
+              $(senha).css('border', formatacao_erro);
+              $(confirmacao_senha).css('border', formatacao_erro);
+              $(email).css('border', formatacao_erro);
+              $(confirmacao_email).css('border', formatacao_erro);
+
+              return false;
+            }
+
+        });
+
+      })();
+    </script>
+  </body>
+</html>
